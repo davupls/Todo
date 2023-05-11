@@ -23,27 +23,36 @@ struct TodoMainView: View {
                         .foregroundColor(.purple)
                 }
                 TextField("What needs to get done today?", text: $taskNote)
+                    .autocorrectionDisabled(true)
                     .onSubmit {
-                        taskList.append(taskNote)
+                        if !taskNote.isEmpty {
+                            taskList.append(taskNote)
+                        }
                         taskNote = ""
                     }
+                    .padding(.bottom)
                 
-                Section {
+                
+                
                     VStack {
-                        ForEach(taskList, id: \.self) { task in
-                            TaskView(task: task)
-                        }
+                            List(taskList, id: \.self) { task in
+                                TaskView(task: task)
+                            }
+                            .listStyle(.plain)
                     }
-                }
                 
-                
-                Spacer()
+                    Button("Clear List") {
+                        taskList.removeAll()
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(.purple)
+                    .cornerRadius(8)
+                    
             }
             .navigationTitle("Todo")
-            .padding(.horizontal)
+            .padding([.horizontal, .bottom])
         }
-        
-        
     }
 }
 
