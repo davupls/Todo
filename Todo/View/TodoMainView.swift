@@ -10,7 +10,7 @@ import CoreData
 
 struct TodoMainView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var tasks: FetchedResults<Tasks>
+    @FetchRequest(sortDescriptors: []) var tasks: FetchedResults<Task>
     
     @State private var userNoteInput = String()
     
@@ -29,7 +29,7 @@ struct TodoMainView: View {
                     .autocorrectionDisabled(true)
                     .onSubmit {
                         if !userNoteInput.isEmpty {
-                            let task = Tasks(context: moc)
+                            let task = Task(context: moc)
                             task.id = UUID()
                             task.taskNote = userNoteInput
                             try? moc.save()
