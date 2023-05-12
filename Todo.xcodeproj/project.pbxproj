@@ -14,6 +14,8 @@
 		93190E112A0CB4FE00181E95 /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93190E102A0CB4FE00181E95 /* TodoTests.swift */; };
 		93190E1B2A0CB4FE00181E95 /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93190E1A2A0CB4FE00181E95 /* TodoUITests.swift */; };
 		93190E1D2A0CB4FE00181E95 /* TodoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93190E1C2A0CB4FE00181E95 /* TodoUITestsLaunchTests.swift */; };
+		93A4E0092A0E310C0006B86E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4E0082A0E310C0006B86E /* DataController.swift */; };
+		93A4E00C2A0E312D0006B86E /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93A4E00A2A0E312D0006B86E /* TaskDataModel.xcdatamodeld */; };
 		93D457452A0D9508009B82BA /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D457442A0D9508009B82BA /* TaskView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		93190E162A0CB4FE00181E95 /* TodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93190E1A2A0CB4FE00181E95 /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
 		93190E1C2A0CB4FE00181E95 /* TodoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		93A4E0082A0E310C0006B86E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		93A4E00B2A0E312D0006B86E /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
 		93D457442A0D9508009B82BA /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,8 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				93190DFF2A0CB4FD00181E95 /* TodoApp.swift */,
-				93190E012A0CB4FD00181E95 /* TodoMainView.swift */,
-				93D457442A0D9508009B82BA /* TaskView.swift */,
+				93A4E00E2A0E33980006B86E /* Model */,
+				93A4E00D2A0E337A0006B86E /* View */,
+				93A4E00F2A0E33AB0006B86E /* Controller */,
 				93190E032A0CB4FD00181E95 /* Assets.xcassets */,
 				93190E052A0CB4FD00181E95 /* Preview Content */,
 			);
@@ -128,6 +133,31 @@
 				93190E1C2A0CB4FE00181E95 /* TodoUITestsLaunchTests.swift */,
 			);
 			path = TodoUITests;
+			sourceTree = "<group>";
+		};
+		93A4E00D2A0E337A0006B86E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93190E012A0CB4FD00181E95 /* TodoMainView.swift */,
+				93D457442A0D9508009B82BA /* TaskView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93A4E00E2A0E33980006B86E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93A4E00A2A0E312D0006B86E /* TaskDataModel.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		93A4E00F2A0E33AB0006B86E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93A4E0082A0E310C0006B86E /* DataController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +291,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D457452A0D9508009B82BA /* TaskView.swift in Sources */,
+				93A4E0092A0E310C0006B86E /* DataController.swift in Sources */,
+				93A4E00C2A0E312D0006B86E /* TaskDataModel.xcdatamodeld in Sources */,
 				93190E022A0CB4FD00181E95 /* TodoMainView.swift in Sources */,
 				93190E002A0CB4FD00181E95 /* TodoApp.swift in Sources */,
 			);
@@ -587,6 +619,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		93A4E00A2A0E312D0006B86E /* TaskDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				93A4E00B2A0E312D0006B86E /* Tasks.xcdatamodel */,
+			);
+			currentVersion = 93A4E00B2A0E312D0006B86E /* Tasks.xcdatamodel */;
+			path = TaskDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 93190DF42A0CB4FC00181E95 /* Project object */;
 }

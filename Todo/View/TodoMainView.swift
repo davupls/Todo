@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TodoMainView: View {
-    @State private var taskNote = String()
-    @State private var taskList = [String]()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var tasks: FetchedResults<Tasks>
+    
+    @State private var userNoteInput = String()
     
     var body: some View {
         NavigationStack {
@@ -22,27 +25,38 @@ struct TodoMainView: View {
                     Image(systemName: "calendar")
                         .foregroundColor(.purple)
                 }
-                TextField("What needs to get done today?", text: $taskNote)
+                TextField("What needs to get done today?", text: $userNoteInput)
                     .autocorrectionDisabled(true)
                     .onSubmit {
-                        if !taskNote.isEmpty {
-                            taskList.append(taskNote)
+                        if !userNoteInput.isEmpty {
+                            let task = Tasks(context: moc)
+                            task.id = UUID()
+                            task.taskNote = userNoteInput
+                            try? moc.save()
                         }
-                        taskNote = ""
+                        userNoteInput = ""
                     }
                     .padding(.bottom)
+                    .textFieldStyle(.roundedBorder)
                 
                 
                 
                     VStack {
-                            List(taskList, id: \.self) { task in
-                                TaskView(task: task)
+                            List(tasks) { task in
+                                TaskView(task: task.taskNote ?? "Unknown")
                             }
                             .listStyle(.plain)
                     }
                 
                     Button("Clear List") {
-                        taskList.removeAll()
+                        func printAll(at offsets: IndexSet) {
+                            for offset in offsets {
+                                let task = tasks[offset]
+                                print(task)
+                                moc.delete(task)
+                            }
+                        }
+                    
                     }
                     .padding()
                     .foregroundColor(.white)
@@ -53,6 +67,10 @@ struct TodoMainView: View {
             .navigationTitle("Todo")
             .padding([.horizontal, .bottom])
         }
+    }
+    
+    func deleteAll() {
+        
     }
 }
 
